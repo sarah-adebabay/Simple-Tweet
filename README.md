@@ -44,9 +44,7 @@ The following **bonus** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-
-<img src='https://www.youtube.com/watch?v=cUNI_0pXXX0&feature=youtu.be' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Here's a walkthrough of implemented user stories: https://www.youtube.com/watch?v=cUNI_0pXXX0&feature=youtu.be
 
 Video created with AZ Screen Recorder
 
