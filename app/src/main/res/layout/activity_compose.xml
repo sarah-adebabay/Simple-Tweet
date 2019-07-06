@@ -7,7 +7,7 @@
     tools:context=".ComposeActivity">
 
     <ImageView
-        android:id="@+id/ivUserProfilePic"
+        android:id="@+id/ivPic"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +28,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnTweet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ivUserProfilePic"
-        app:layout_constraintTop_toBottomOf="@+id/ivUserProfilePic" />
+        app:layout_constraintStart_toStartOf="@+id/ivPic"
+        app:layout_constraintTop_toBottomOf="@+id/ivPic" />
 
     <TextView
         android:id="@+id/tvUserName"

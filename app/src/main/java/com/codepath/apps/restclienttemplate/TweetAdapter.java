@@ -52,10 +52,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         viewHolder.tvAt.setText("@" + tweet.user.screenName);
         viewHolder.tvTime.setText(getRelativeTimeAgo(tweet.createdAt));
 
-        //viewHolder.tvUserName.setText("sarah:)");
-        //viewHolder.tvUserAt.setText("@sunshine_saraah");
-        //Glide.with(context).load("https://pbs.twimg.com/profile_images/1067724980484370434/1EVuQTnS_400x400.jpg").into(viewHolder.ivProfileImage);
-
     }
 
     public String getRelativeTimeAgo(String rawJsonDate) {
@@ -105,7 +101,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
             //adding the username, screenname, and profile pic
             tvUserName = itemView.findViewById(R.id.tvUserName);
             tvUserAt = itemView.findViewById(R.id.tvUserAt);
-            ivUserProfilePic = itemView.findViewById(R.id.ivUserProfilePic);
+            ivUserProfilePic = itemView.findViewById(R.id.ivPic);
 
         }
 

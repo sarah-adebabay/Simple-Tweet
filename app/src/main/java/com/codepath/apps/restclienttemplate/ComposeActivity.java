@@ -13,12 +13,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -41,19 +44,20 @@ public class ComposeActivity extends AppCompatActivity {
 
         client = TwitterApplication.getRestClient(this);
         message = findViewById(R.id.et_simple);
-        username = findViewById(R.id.tvUserName);
-        userAt = findViewById(R.id.tvUserAt);
-        userprofilePic = findViewById(R.id.ivUserProfilePic);
-
-        //try to find a way for this to work for a variety of unique users
-        username.setText("sarah :)");
-        userAt.setText("sunshine_saraah");
 
         tvcharCount = findViewById(R.id.tvcharCount);
         tvcharCount.setText("280/280");
 
-        //add the user profile pic here
-        //userprofilePic.....
+        User user = Parcels.unwrap(getIntent().getParcelableExtra("Your User Info"));
+
+        username = findViewById(R.id.tvUserName);
+        userAt = findViewById(R.id.tvUserAt);
+        userprofilePic = findViewById(R.id.ivPic);
+
+        username.setText(user.name);
+        userAt.setText(String.format("@%s", user.screenName));
+
+        Glide.with(this).load(user.profileImageURL).into(userprofilePic);
 
         postButton = (Button) findViewById(R.id.btnTweet);
         postButton.setOnClickListener(new View.OnClickListener() {
