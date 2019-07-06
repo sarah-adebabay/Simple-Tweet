@@ -30,6 +30,10 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 				sampleModelDao.insertModel(sampleModel);
 			}
 		});
+
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
+		getSupportActionBar().setLogo(R.drawable.ic_launcher_twitter);
+		getSupportActionBar().setDisplayUseLogoEnabled(true);
 	}
 
 

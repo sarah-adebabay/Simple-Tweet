@@ -66,6 +66,10 @@ public class TimelineActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher_twitter);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 
     public void clear() {
@@ -110,16 +114,6 @@ public class TimelineActivity extends AppCompatActivity {
                 //Log.d("Twitter Client", response.toString());
                 for (int i = 0; i < response.length(); i++) {
                     try {
-                        client.getUser(new JsonHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                try {
-                                    user = User.fromJSON(response);
-                                } catch (JSONException o) {
-                                    o.printStackTrace();
-                                }
-                            }
-                        });
                         Tweet tweet = Tweet.fromJSON(response.getJSONObject(i));
                         tweets.add(tweet);
                         tweetAdapter.notifyItemInserted(tweets.size() - 1);
@@ -155,9 +149,19 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     public void onClick(MenuItem menuItem) {
-        Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
-        i.putExtra("Your User Info", Parcels.wrap(user));
-        startActivityForResult(i, REQUEST_CODE);
+        client.getUser(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    user = User.fromJSON(response);
+                    Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
+                    i.putExtra("Your User Info", Parcels.wrap(user));
+                    startActivityForResult(i, REQUEST_CODE);
+                } catch (JSONException o) {
+                    o.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
